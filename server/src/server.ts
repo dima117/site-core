@@ -15,7 +15,7 @@ app.use(
     express.static(path.join(__dirname, '../public'), { maxAge: 31557600000 })
 );
 
-app.get('/', (req, res) => {
+app.get('/xxx', (req, res) => {
     res.json(__dirname);
 });
 

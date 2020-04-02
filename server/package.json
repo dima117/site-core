@@ -4,14 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development node ./dist/server.js",
-    "start-w": "NODE_ENV=development nodemon ./dist/server.js",
     "build": "tsc",
-    "watch": "tsc -w"
+    "start": "nodemon ./dist/server.js",
+    "watch": "concurrently --kill-others \"tsc -w\" \"npm start\""
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
   "dependencies": {
     "@types/body-parser": "^1.19.0",
     "@types/errorhandler": "^1.5.0",
@@ -19,6 +15,7 @@
     "body-parser": "^1.19.0",
     "errorhandler": "^1.5.1",
     "express": "^4.17.1",
-    "nodemon": "^2.0.2"
+    "nodemon": "^2.0.2",
+    "concurrently": "^5.1.0"
   }
 }
