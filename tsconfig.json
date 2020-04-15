@@ -1,0 +1,33 @@
+{
+    "compilerOptions": {
+        "target": "es6",
+        "module": "commonjs",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "jsx": "react",
+        "declaration": true,
+
+        /* Strict Type-Checking Options */
+        "strict": true,
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "strictFunctionTypes": true,
+        "strictBindCallApply": true,
+        "strictPropertyInitialization": true,
+        "noImplicitThis": true,
+        "alwaysStrict": true,
+
+        /* Additional Checks */
+        // "noUnusedLocals": true,                /* Report errors on unused locals. */
+        // "noUnusedParameters": true,            /* Report errors on unused parameters. */
+        // "noImplicitReturns": true,             /* Report error when not all code paths in function return a value. */
+        // "noFallthroughCasesInSwitch": true,    /* Report errors for fallthrough cases in switch statement. */
+
+        /* Module Resolution Options */
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "files": ["server/server.ts"]
+}
