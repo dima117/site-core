@@ -29,5 +29,5 @@
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true
     },
-    "files": ["server/server.ts"]
+    "files": ["server/server.ts", "config.ts"]
 }

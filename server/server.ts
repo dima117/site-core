@@ -1,6 +1,9 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 
+import { loadSiteConfig } from './config';
+import { coreMiddleware } from './coreMiddleware';
+
 // Create Express server
 const app = express();
 
@@ -8,6 +11,10 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+// Configure site
+const siteConfig = loadSiteConfig();
+app.use(coreMiddleware(siteConfig));
 
 /**
  * Start Express server.
