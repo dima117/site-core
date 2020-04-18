@@ -4,21 +4,24 @@
   "main": "index.js",
   "scripts": {
     "start": "PORT=3001 node ./dist/server/server.js",
+    "dev": "PORT=3001 nodemon ./dist/server/server.js",
     "build": "tsc",
-    "watch-tmp": "concurrently --kill-others \"tsc -w\" \"npm start\""
+    "watch": "concurrently --kill-others \"tsc -w\" \"npm run dev\""
   },
   "devDependencies": {
+    "@types/react": "^16.9.34",
+    "@types/react-dom": "^16.9.6",
     "@types/body-parser": "^1.19.0",
     "@types/express": "^4.17.6",
     "@types/history": "^4.7.5",
     "@types/lodash": "^4.14.149",
     "@types/react-redux": "^7.1.7",
+    "concurrently": "^5.1.0",
+    "nodemon": "^2.0.3",
     "ts-loader": "^7.0.0",
     "typescript": "^3.8.3"
   },
   "dependencies": {
-    "@types/react": "^16.9.34",
-    "@types/react-dom": "^16.9.6",
     "body-parser": "^1.19.0",
     "direct-react-router": "^1.4.0",
     "express": "^4.17.1",
