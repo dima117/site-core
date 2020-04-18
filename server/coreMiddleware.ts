@@ -1,16 +1,12 @@
 import { Request, Response, NextFunction, RequestHandler } from 'express';
 import { parseLocation } from 'direct-react-router';
 import { createMemoryHistory } from 'history';
-import { renderToString } from 'react-dom/server';
-import { createElement } from 'react';
-import serialize from 'serialize-javascript';
 
 import { buildRouterConfig } from './config';
+import { renderHtml } from './renderer';
 import { SiteConfig } from '../lib/SiteConfig';
 
-function buildDataScript(data: any): string {
-    return `<script>window.__SERVER_DATA = ${serialize(data)};</script>`;
-}
+
 
 export function coreMiddleware(config: SiteConfig): RequestHandler {
     const routeConfig = buildRouterConfig(config);
@@ -23,15 +19,12 @@ export function coreMiddleware(config: SiteConfig): RequestHandler {
         const { component, getData } = config.pages[location.key] || {};
 
         if (component) {
-            const parts = [];
-
-            if (getData) {
-                parts.push(buildDataScript(await getData(location)));
+            try {
+                const data = getData ? await getData(location) : undefined;
+                res.send(renderHtml(data, component));    
+            } catch (err) {
+                next(err);
             }
-
-            parts.push(renderToString(createElement(component)))
-
-            res.send(parts.join(''));
         } else {
             next();
         }

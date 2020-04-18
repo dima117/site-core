@@ -6,6 +6,7 @@ import { SiteConfig } from '../lib/SiteConfig';
 import { Page } from '../lib/Page';
 
 export function loadSiteConfig(): SiteConfig {
+    // todo: захардкожен путь к файлу
     const config = require('../config').default;
 
     // if (config instanceof SiteConfig) {
@@ -17,6 +18,6 @@ export function loadSiteConfig(): SiteConfig {
 
 export const buildRouterConfig = memoize((config: SiteConfig): RouterConfig => {
     return { 
-        routes: mapValues(config.pages, (page: Page) => page.route )
+        routes: mapValues(config.pages, (page: Page<any>) => page.route )
     };
 });
