@@ -3,6 +3,7 @@ import bodyParser from 'body-parser';
 
 import { loadSiteConfig } from './config';
 import { coreMiddleware } from './coreMiddleware';
+import { dataMiddleware } from './dataMiddleware';
 
 // Create Express server
 const app = express();
@@ -14,6 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Configure site
 const siteConfig = loadSiteConfig();
+app.use('/data', dataMiddleware(siteConfig))
 app.use(coreMiddleware(siteConfig));
 
 /**

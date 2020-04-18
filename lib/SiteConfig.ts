@@ -1,10 +1,11 @@
 import { Page } from './Page';
 
+export type AnyPage = Page<any>;
 
 export class SiteConfig {
-    pages: Record<string, Page> = {};
+    pages: Record<string, AnyPage> = {};
 
-    register(alias: string, page: Page): SiteConfig {
+    register<T>(alias: string, page: Page<T>): SiteConfig {
         this.pages[alias] = page;
 
         return this;
